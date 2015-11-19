@@ -1,0 +1,32 @@
+{
+  "name": "the_callbacks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaimariev/TheCallbacks.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaimariev/TheCallbacks/issues"
+  },
+  "homepage": "https://github.com/jaimariev/TheCallbacks#readme",
+  "dependencies": {
+    "backbone": "^1.2.3",
+    "css-loader": "^0.23.0",
+    "jquery": "^2.1.4",
+    "json-loader": "^0.5.3",
+    "jsx-loader": "^0.13.2",
+    "material-ui": "^0.13.3",
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2",
+    "react-tap-event-plugin": "^0.2.1",
+    "style-loader": "^0.13.0",
+    "underscore": "^1.8.3"
+  }
+}
