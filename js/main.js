@@ -1,3 +1,10 @@
-require("../css/normalize.css");
-require("../css/main.css");
+
+
+$.ajax({
+    url: "https://pacific-gorge-8441.herokuapp.com/api/items"
+}).then(function(resp){
+    console.log(resp);
+});
+
+
 
