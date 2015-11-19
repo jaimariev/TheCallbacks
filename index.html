@@ -1,34 +1,47 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="English">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> All I Want</title>
 
+<title> All I Want</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
 <body>
-<div id='container'></div>
-	
-	<section class="loginform cf">
-<form name="login" action="index_submit" method="get" accept-charset="utf-8">
-    <ul>
-<li><label for="usermail">Email</label>
 
-<input type="email" name="usermail" placeholder="yourname@email.com" required></li>
-
-<li><label for="password">Password</label>
-
- <input type="password" name="password" placeholder="password" required></li>
-        <li>
-
-        <input type="submit" value="Login"></li>
-    </ul>
+<form>
+<fieldset>
+<legend>Log In</legend>
+<div id="tab1">
+  Email:<br>
+  <input type="text" name="email" placeholder="Your Email">
+  <br>
+  Password:<br>
+  <input type="text" name="pass" placeholder="Password"><br><br>
+  <input type="submit" value="Log In">
+</div>
+</fieldset>
 </form>
 
+<form>
+<fieldset>
+<legend>Sign Up</legend>
+<div id="tab2">
+  Email:<br>
+  <input type="text" name="EMAIl" placeholder="New Email">
+  <br>
+   New Password:<br>
+  <input type="text" name="NP" placeholder="Your Password">
+  <br>
+  Confirm Password:<br>
+  <input type="text" placeholder="Confirm password"><br><br>
+  <input type="submit" value="Log In">
+</div>
+</fieldset>
+</form>
 
-   <script type="text/javascript" src="js/loginform.js"></script>
-	<script src="js/bundle.js"/>		
+<script type="text/javascript" src="loginform.js"></script>
+<script src="js/bundle.js"></script>
 </body>
 </html>
