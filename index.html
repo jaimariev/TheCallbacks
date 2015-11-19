@@ -16,8 +16,7 @@
 <div id="container">
 <label for="Username">Username:</label>
   <input type="text" name="email" placeholder="Your Email">
-
-	<label for=password>Password:</label>
+  <label for=password>Password:</label>
   <input type="text" name="pass" placeholder="Password"><br><br>
   <input type="checkbox"><label for="checkbox">Keep me logged in</label>
   <input type="submit" value="Log In">
@@ -57,12 +56,16 @@
     <button>Add</button>
   <div>
 
-  <div id="pledges">
+  <div id="pledgesContainer">
     <h2> My Pledges </h2>
     <div id="totalPledges">
       <p> Total Pledges </p>
     </div>
   </div>
+
+  <div id="myWishListContainer"></div>
+  <div id="founderContainer"></div>
+
 
   <div id="footer">
     <h3> All I Want </h3>
@@ -75,8 +78,14 @@
 
   </div>
 
-<script type="text/javascript" src="loginform.js"></script>
-<script src="js/bundle.js"></script>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.3/backbone-min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.0/mustache.js"></script>
+  <script type="text/javascript" src="js/components/loginform.js"></script>
+<script src="js/main.js"></script>
+
 
 </body>
 </html>
