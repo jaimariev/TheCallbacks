@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="">
 <head>
-  <meta charset="UTF-8">
-  <title>Group Project</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+ <meta charset="UTF-8">
+<title> All I Want</title>
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
 </head>
+
 <body>
+
 	<div id='container'>
     <div id="navBar">
       <h3 id="title"> All I Want </h3>
@@ -39,16 +44,61 @@
     <a href="http://www.twitter.com"><i class="fa fa-twitter"></i></a>
   </div>
 
+<div class="tabs">
+    
+   <div class="tab">
+       <input type="radio" id="tab-1" name="tab-group-1" checked>
+       <label for="tab-1">Login</label>
+       
+       <div class="content">
+            <section class="loginform cf">
+<form name="login" action="index_submit" method="get" accept-charset="utf-8">
+    <ul>
+<li><label for="usermail">Email</label>
+
+<input type="email" name="usermail" placeholder="yourname@email.com" required></li>
+
+<li><label for="password">Password</label>
+
+ <input type="password" name="password" placeholder="password" required></li>
+        <li>
+
+        <input type="submit" value="Login"></li>
+    </ul>
+</form>
+       </div> 
+   </div>
+    
+
+   <div class="tab">
+       <input type="radio" id="tab-2" name="tab-group-1">
+       <label for="tab-2">Sign Up</label>
+       
+       <div class="content">
+           <section class="loginform cf">
+<form name="login" action="index_submit" method="get" accept-charset="utf-8">
+    <ul>
+<li><label for="usermail">Your Email</label>
+
+<input type="email" name="usermail" placeholder="yourname@email.com" required></li>
+
+<li><label for="password">New Password</label>
+  <input type="password" name="password" placeholder="password" required></li>
+
+<li><label for="password">Confirm Password</label>
+ <input type="password" name="password" placeholder="password" required></li>
 
 
+<li>
+ <input type="submit" value="Sign Up"></li>
+</ul>
+</form>
+       </div> 
 
+    
 
-
-
-
-
-
-  </div>
-	<script src="js/bundle.js"></script>
+<script type="text/javascript" src="main.js"></script>
+	<script src="js/bundle.js"/>		
 </body>
 </html>
+
