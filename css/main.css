@@ -1,60 +1,83 @@
 
-.loginform ul {
-   list-style: none;
-   background: #eee;
-}
-	
-label {
-    display: block;
-}
-
-.loginform input:not([type=submit]) {
-    border: 1px solid blue;
+	#container {
+    position: fixed;
+    width: 340px;
+    height: 280px;
+    top: 50%;
+    left: 50%;
+    margin-top: -140px;
+    margin-left: -170px;
+	background: #fff;
     border-radius: 3px;
-    
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
 }
 
-.loginform input[type=submit] {
-    border: 1px solid red;
+form{
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+label{
+	color: aqua;
+	display: inline-block;
+	margin-left: 18px;
+	padding-top: 10px;
+	font-size: 14px;
+}
+
+
+
+p a:hover{
+	color:brown;
+}
+
+input{
+	font-family: ;
+	font-size: 12px;
+	outline: none;
+}
+
+input[type=text],
+input[type=password] {
+    color: #777;
+    padding-left: 10px;
+    margin: 10px;
+    margin-top: 12px;
+    margin-left: 18px;
+    width: 290px;
+    height: 35px;
+    border: 1px solid #c7d0d2;
+    border-radius: 2px;
+}
+
+#lower {
+    background: #ecf2f5;
+    width: 100%;
+    height: 69px;
+    margin-top: 20px;
+}
+input[type=checkbox] {
+    margin-left: 20px;
+    margin-top: 30px;
+}
+.check {
+    margin-left: 3px;
+}
+
+input[type=submit] {
+    float: right;
+    margin-right: 20px;
+    margin-top: 20px;
+    width: 80px;
+    height: 30px;
+    font-size: 14px;
+    font-weight: bold;
     color: #fff;
-    border-radius: 3px;
-   
+    background-color: #acd6ef;
+    border-radius: 30px;
+    border: 1px solid #66add6;
+    cursor: pointer;
 }
 
-.tabs {
-  position: relative;   
-  min-height: 250px;
-  clear: both;
-}
-.tab {
-  float: left;
-}
-.tab label {
-  background: #eee; 
-  padding: 10px; 
 
-  margin-left: -1px; 
-  position: relative;
-
-}
-.tab [type=radio] {
-  display: none;   
-}
-.content {
-  position: absolute;
-  top: 28px;
-  left: 0;
-  background: white;
-  right: 0;
-  bottom: 0;
-  padding: 5px;
-  border: 1px solid #ccc; 
-}
-[type=radio]:checked ~ label {
-  background: white;
-  border-bottom: 1px solid white;
-  z-index: 2;
-}
-[type=radio]:checked ~ label ~ .content {
-  z-index: 1;
-}
