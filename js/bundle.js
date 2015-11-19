@@ -49,7 +49,7 @@
 
 	$(document).ready(function(){
 		//var Router = require ('./router.jsx');
-
+		console.log('test');
 
 	});
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
