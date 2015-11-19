@@ -1,104 +1,47 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="English">
 <head>
- <meta charset="UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title> All I Want</title>
-
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
-
 </head>
 
 <body>
 
-	<div id='container'>
-    <div id="navBar">
-      <h3 id="title"> All I Want </h3>
-      <h3 id="userName"> Username </h3>
-    </div>
-
-  <div id="iconContainer">
-   <a href="#"><i class="fa fa-birthday-cake"> Fund my Birthday</i></a>
-    <br/>
-    <a href="#"><i class="fa fa-tree"> Fund my Christmas </i></a>
-    <br/>
-    <a href="#"><i class="fa fa-diamond"> Fund my Wedding </i></a>
-    <br/>
-    <a href="#"><i class="fa fa-rocket"> fund my Vacation </i></a>
-    <br/>
-    <button>Add</button>
-  <div>
-
-  <div id="pledges">
-    <h2> My Pledges </h2>
-    <div id="totalPledges">
-      <p> Total Pledges </p>
-    </div>
-  </div>
-
-  <div id="footer">
-    <h3> All I Want </h3>
-    <p>&copy; The Callbacks</p>
-    <a href="http://www.facebook.com"><i class="fa fa-facebook-official"></i></a>
-    <a href="http://www.instagram.com"><i class="fa fa-instagram"></i></a>
-    <a href="http://www.twitter.com"><i class="fa fa-twitter"></i></a>
-  </div>
-
-<div class="tabs">
-    
-   <div class="tab">
-       <input type="radio" id="tab-1" name="tab-group-1" checked>
-       <label for="tab-1">Login</label>
-       
-       <div class="content">
-            <section class="loginform cf">
-<form name="login" action="index_submit" method="get" accept-charset="utf-8">
-    <ul>
-<li><label for="usermail">Email</label>
-
-<input type="email" name="usermail" placeholder="yourname@email.com" required></li>
-
-<li><label for="password">Password</label>
-
- <input type="password" name="password" placeholder="password" required></li>
-        <li>
-
-        <input type="submit" value="Login"></li>
-    </ul>
+<form>
+<fieldset>
+<legend>Log In</legend>
+<div id="tab1">
+  Email:<br>
+  <input type="text" name="email" placeholder="Your Email">
+  <br>
+  Password:<br>
+  <input type="text" name="pass" placeholder="Password"><br><br>
+  <input type="submit" value="Log In">
+</div>
+</fieldset>
 </form>
-       </div> 
-   </div>
-    
 
-   <div class="tab">
-       <input type="radio" id="tab-2" name="tab-group-1">
-       <label for="tab-2">Sign Up</label>
-       
-       <div class="content">
-           <section class="loginform cf">
-<form name="login" action="index_submit" method="get" accept-charset="utf-8">
-    <ul>
-<li><label for="usermail">Your Email</label>
-
-<input type="email" name="usermail" placeholder="yourname@email.com" required></li>
-
-<li><label for="password">New Password</label>
-  <input type="password" name="password" placeholder="password" required></li>
-
-<li><label for="password">Confirm Password</label>
- <input type="password" name="password" placeholder="password" required></li>
-
-
-<li>
- <input type="submit" value="Sign Up"></li>
-</ul>
+<form>
+<fieldset>
+<legend>Sign Up</legend>
+<div id="tab2">
+  Email:<br>
+  <input type="text" name="EMAIl" placeholder="New Email">
+  <br>
+   New Password:<br>
+  <input type="text" name="NP" placeholder="Your Password">
+  <br>
+  Confirm Password:<br>
+  <input type="text" placeholder="Confirm password"><br><br>
+  <input type="submit" value="Sign Up">
+</div>
+</fieldset>
 </form>
-       </div> 
 
-    
-
-<script type="text/javascript" src="main.js"></script>
-	<script src="js/bundle.js"/>		
+<script type="text/javascript" src="loginform.js"></script>
+<script src="js/bundle.js"></script>
 </body>
 </html>
-
