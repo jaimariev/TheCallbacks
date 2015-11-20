@@ -6,6 +6,20 @@ $(document).ready(function(){
     console.log(resp);
   });
 
+  var Router = Backbone.Router.extend({
+    initialize: function() {
+      Backbone.history.start({pushState: true});
+    },
+    routes: {
+      "item/:id": "item",
+      "add": "add",
+      "delete": "delete",
+      "": "index"
+    }
+  });
+
+  var router = new Router();
+
   var itemContainer = Backbone.Model.extend({
     initialize: function(){
     },
@@ -34,6 +48,26 @@ $(document).ready(function(){
     }
 });
 
+  itemCollection.set ({
+    item_url: $("#addItem").val(),
+    title: $("#addTitle").val(),
+    description: $("#addDescription").val(),
+    price: $("#1addPrice").val()
+  })
+  $("#addItem").val("");
+  $("#addTitle").val("");
+  $("#addDescription").val("");
+  $("#addPrice").val("");
+
+  itemCollection.save (null, {
+    success: function(resp) {
+      console.log("success", resp);
+    },
+    error: function(err) {
+      console.log("nope", err);
+    }
+  });
+
   var pledgeContainer = Backbone.Model.extend({
     initialize: function(){
     },
@@ -58,6 +92,24 @@ $(document).ready(function(){
     },
     error: function(err) {
       console.log("nope", err);
+    }
+  });
+
+  pledgeCollection.set ({
+    item: $("#addPledgeItem").val(),
+    pledge_amount: $("#addPledgeAmount").val(),
+    user: $("#addUser").val()
+  })
+    $("#addPledgeItem").val("");
+    $("#addPledgeAmount").val("");
+    $("#addUser").val("");
+
+  pledgeCollection.save(null, {
+    success: function(resp) {
+      console.log("success", resp)
+    },
+    error: function(err) {
+      console.log("nope", err)
     }
   });
 
@@ -89,8 +141,25 @@ $(document).ready(function(){
     }
   });
 
+  wishCollection.set ({
+    item: $("#addWishItem").val(),
+    expiration_date: $("#addExpirationDate").val(),
+    list_url: $("#addListUrl").val(),
+    url: $("#addWishUrl").val()
+  })
+   $("#addWishItem").val("");
+    $("#addExpirationDate").val("");
+    $("#addListUrl").val("");
+    $("#addWishUrl").val("");
 
-	console.log('test');
+  wishCollection.save (null, {
+   succes: function(resp) {
+    console.log("succes", resp);
+   },
+   error: function(err) {
+    console.log("nope", err);
+   }
+  });
 
 $("#formContainer").hide();
 
