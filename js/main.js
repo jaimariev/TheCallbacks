@@ -6,6 +6,20 @@ $(document).ready(function(){
     console.log(resp);
   });
 
+  var Router = Backbone.Router.extend({
+    initialize: function() {
+      Backbone.history.start({pushState: true});
+    },
+    routes: {
+      "item/:id": "item",
+      "add": "add",
+      "delete": "delete",
+      "": "index"
+    }
+  });
+
+  var router = new Router();
+
   var itemContainer = Backbone.Model.extend({
     initialize: function(){
     },
@@ -88,6 +102,9 @@ $(document).ready(function(){
       console.log("nope", err);
     }
   });
+
+
+
 
 
 	console.log('test');
