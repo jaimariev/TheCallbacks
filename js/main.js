@@ -6,6 +6,14 @@ $(document).ready(function(){
     console.log(resp);
   });
 
+  sendAuthentication = function (xhr) {
+  var user = "nick";// your actual username
+  var pass = "123";// your actual password
+  var token = user.concat(":", pass);
+  xhr.setRequestHeader('Authorization', ("Basic ".concat(btoa(token))));
+}
+
+
   var Router = Backbone.Router.extend({
     initialize: function() {
       Backbone.history.start({pushState: true});
@@ -109,6 +117,7 @@ $(document).ready(function(){
   });
 
   // pledgeCollection.set ({
+  //   beforeSend: sendAuthentication,
   //   item: $("#addPledgeItem").val(),
   //   pledge_amount: $("#addPledgeAmount").val(),
   //   user: $("#addUser").val()
@@ -148,6 +157,7 @@ $(document).ready(function(){
     wishCollection.fetch ({
       success: function(resp){
         var data2obj = {"data": resp.toJSON()};
+        console.log(data2obj);
         var wishTemplate = $("#wishTemplate").text();
         var wishHTML = Mustache.render(wishTemplate, data2obj);
         console.log("success", resp);
@@ -157,28 +167,28 @@ $(document).ready(function(){
       }
     });
 
-    // wishCollection.set ({
-    //   item: $("#addWishItem").val(),
-    //   expiration_date: $("#addExpirationDate").val(),
-    //   list_url: $("#addListUrl").val(),
-    //   url: $("#addWishUrl").val()
-    // })
-    //  $("#addWishItem").val("");
-    //   $("#addExpirationDate").val("");
-    //   $("#addListUrl").val("");
-    //   $("#addWishUrl").val("");
+    wishCollection.set ({
+      item: $("#addWishItem").val(),
+      expiration_date: $("#addExpirationDate").val(),
+      list_url: $("#addListUrl").val(),
+      url: $("#addWishUrl").val()
+    })
+     $("#addWishItem").val("");
+      $("#addExpirationDate").val("");
+      $("#addListUrl").val("");
+      $("#addWishUrl").val("");
 
-    // wishCollection.save (null, {
-    //  succes: function(resp) {
-    //   console.log("succes", resp);
-    //  },
-    //  error: function(err) {
-    //   console.log("nope", err);
-    //  }
-    // });
+    wishCollection.save (null, {
+     succes: function(resp) {
+      console.log("succes", resp);
+     },
+     error: function(err) {
+      console.log("nope", err);
+     }
+    });
 
 
-    $("#formContainer").hide();
+    //$("#formContainer").hide();
     //$("#itemContainer").hide();
     $("#inputBtn").on('click', function() {
     $("#itemPage").show();
