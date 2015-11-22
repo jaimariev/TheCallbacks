@@ -13,60 +13,73 @@ $(document).ready(function(){
     routes: {
       "item/:id": "item",
       "add": "add",
-      "delete": "delete",
       "": "index"
     }
   });
 
   var router = new Router();
 
+
   var itemContainer = Backbone.Model.extend({
     initialize: function(){
     },
     defaults: {
       item_url: null,
+      image_url: null,
       title: null,
       description: null,
-      price: null
+      price: null,
+      wishList: null
     },
     Model: itemContainer,
-    url: 'https://pacific-gorge-8441.herokuapp.com/api/items'
+    url: 'https://pacific-gorge-8441.herokuapp.com/api/items/'
   });
 
   var itemContainers = Backbone.Collection.extend({
      Model: itemContainer
    });
 
-  var itemCollection = new itemContainer();
+    var itemCollection = new itemContainer();
+      itemCollection.fetch ({
+      success: function(resp) {
+        var dataObj = {"data": resp.toJSON().results};
+        console.log(dataObj);
+        var itemTemplate = $("#itemTemplate").text();
+        var itemHTML = Mustache.render(itemTemplate, dataObj);
+        $("#itemContainer").html(itemHTML);
+        console.log("success", resp);
+      },
+      error: function(err) {
+        console.log("nope", err);
+      }
+    });
+    $("#addButton").on('click', function() {
+      var itemAdd = new itemContainer();
+      itemAdd.set ({
+        item_url: $("#addItem").val(),
+        image_url: $("#addImage").val(),
+        title: $("#addTitle").val(),
+        description: $("#addDescription").val(),
+        price: $("#addPrice").val(),
+        wish_list: $("#addWishList").val()
+      });
 
-  itemCollection.fetch ({
-    success: function(resp) {
-      console.log("success", resp);
-    },
-    error: function(err) {
-      console.log("nope", err);
-    }
-});
-
-  itemCollection.set ({
-    item_url: $("#addItem").val(),
-    title: $("#addTitle").val(),
-    description: $("#addDescription").val(),
-    price: $("#1addPrice").val()
-  })
-  $("#addItem").val("");
-  $("#addTitle").val("");
-  $("#addDescription").val("");
-  $("#addPrice").val("");
-
-  itemCollection.save (null, {
-    success: function(resp) {
-      console.log("success", resp);
-    },
-    error: function(err) {
-      console.log("nope", err);
-    }
-  });
+      itemAdd.save (null, {
+        url: 'https://pacific-gorge-8441.herokuapp.com/api/items/',
+        success: function(resp) {
+          console.log("success", resp);
+        },
+        error: function(err) {
+          console.log("nope", err);
+        }
+      });
+      $("#addItem").val("");
+      $("#addImage").val("");
+      $("#addTitle").val("");
+      $("#addDescription").val("");
+      $("#addPrice").val("");
+      $("#addWishList").val("");
+    });
 
   var pledgeContainer = Backbone.Model.extend({
     initialize: function(){
@@ -95,23 +108,23 @@ $(document).ready(function(){
     }
   });
 
-  pledgeCollection.set ({
-    item: $("#addPledgeItem").val(),
-    pledge_amount: $("#addPledgeAmount").val(),
-    user: $("#addUser").val()
-  })
-    $("#addPledgeItem").val("");
-    $("#addPledgeAmount").val("");
-    $("#addUser").val("");
+  // pledgeCollection.set ({
+  //   item: $("#addPledgeItem").val(),
+  //   pledge_amount: $("#addPledgeAmount").val(),
+  //   user: $("#addUser").val()
+  // })
+  //   $("#addPledgeItem").val("");
+  //   $("#addPledgeAmount").val("");
+  //   $("#addUser").val("");
 
-  pledgeCollection.save(null, {
-    success: function(resp) {
-      console.log("success", resp)
-    },
-    error: function(err) {
-      console.log("nope", err)
-    }
-  });
+  // pledgeCollection.save(null, {
+  //   success: function(resp) {
+  //     console.log("success", resp)
+  //   },
+  //   error: function(err) {
+  //     console.log("nope", err)
+  //   }
+  // });
 
   var wishContainer = Backbone.Model.extend({
     initialize: function(){
@@ -130,39 +143,50 @@ $(document).ready(function(){
     Model: wishContainer
   });
 
-  var wishCollection = new wishContainer();
 
-  wishCollection.fetch ({
-    success: function(resp) {
-      console.log("success", resp);
-    },
-    error: function(err){
-      console.log("nope", err);
-    }
+    var wishCollection = new wishContainer();
+    wishCollection.fetch ({
+      success: function(resp){
+        var data2obj = {"data": resp.toJSON()};
+        var wishTemplate = $("#wishTemplate").text();
+        var wishHTML = Mustache.render(wishTemplate, data2obj);
+        console.log("success", resp);
+      },
+      error: function(err){
+        console.log("nope", err);
+      }
+    });
+
+    // wishCollection.set ({
+    //   item: $("#addWishItem").val(),
+    //   expiration_date: $("#addExpirationDate").val(),
+    //   list_url: $("#addListUrl").val(),
+    //   url: $("#addWishUrl").val()
+    // })
+    //  $("#addWishItem").val("");
+    //   $("#addExpirationDate").val("");
+    //   $("#addListUrl").val("");
+    //   $("#addWishUrl").val("");
+
+    // wishCollection.save (null, {
+    //  succes: function(resp) {
+    //   console.log("succes", resp);
+    //  },
+    //  error: function(err) {
+    //   console.log("nope", err);
+    //  }
+    // });
+
+
+    $("#formContainer").hide();
+    //$("#itemContainer").hide();
+    $("#inputBtn").on('click', function() {
+    $("#itemPage").show();
+    $("#mainContainer").hide();
+    $("#formContainer").hide();
+
+    });
+
   });
-
-  wishCollection.set ({
-    item: $("#addWishItem").val(),
-    expiration_date: $("#addExpirationDate").val(),
-    list_url: $("#addListUrl").val(),
-    url: $("#addWishUrl").val()
-  })
-   $("#addWishItem").val("");
-    $("#addExpirationDate").val("");
-    $("#addListUrl").val("");
-    $("#addWishUrl").val("");
-
-  wishCollection.save (null, {
-   succes: function(resp) {
-    console.log("succes", resp);
-   },
-   error: function(err) {
-    console.log("nope", err);
-   }
-  });
-
-$("#formContainer").hide();
-
-});
 
 
