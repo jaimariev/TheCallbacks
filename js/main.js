@@ -6,12 +6,13 @@ $(document).ready(function(){
     console.log(resp);
   });
 
-  sendAuthentication = function (xhr) {
-  var user = "nick";// your actual username
-  var pass = "123";// your actual password
-  var token = user.concat(":", pass);
-  xhr.setRequestHeader('Authorization', ("Basic ".concat(btoa(token))));
-}
+//   Trying to set up a header but have no clue how
+//   sendAuthentication = function (xhr) {
+//   var user = "nick";// your actual username
+//   var pass = "123";// your actual password
+//   var token = user.concat(":", pass);
+//   xhr.setRequestHeader('Authorization', ("Basic ".concat(btoa(token))));
+// }
 
 
   var Router = Backbone.Router.extend({
