@@ -19,11 +19,11 @@
 		<div id="loginContainer">
 			<form>
 				<label for="Username">Username:</label>
-			  	<input type="text" name="email" placeholder="Your Email">
-				<label for=password>Password:</label>
-			  	<input type="text" name="pass" placeholder="Password"><br><br>
+			  	<input id="username" type="text" name="email" placeholder="Your Email">
+				<label  for=password>Password:</label>
+			  	<input id="password" type="text" name="pass" placeholder="Password"><br><br>
 			  	<input type="checkbox"><label for="checkbox">Keep me logged in</label>
-			  	<input type="submit" value="Log In">
+			  	<input id="loginBtn" type="submit" value="Log In">
 		  	</form>
 		</div>
 		<div id="signUpContainer">
@@ -100,7 +100,18 @@
     </form>
   </div>
 
+  <div class="addWish">
+    <form id="addWishForm">
+      <input id="addWishTitle" value="" type='text' placeholder="Title">
+      </br><input id="addExpirationDate" value="" type='input' placeholder="Expiration Date">
+      </br><input id="addListUrl" value="" type='text' placeholder="List URL">
+      </br><input id="addWishUser" value="" type='text' placeholder="User">
+      <button id="addButton2" type="submit">Add</button>
+    </form>
+  </div>
+
 	<div id ="itemContainer"></div>
+	<div id ="wishContainer"></div>
 
 	<script type="x-tmpl-mustache" id="itemTemplate">
 	{{#data}}
@@ -112,6 +123,19 @@
 		<li> {{price}} </li>
 	</ul>
 	{{/data}}
+	</script>
+
+	<script type="x-tmpl-mustache" id="wishTemplate">
+	{{#data}}
+		<ul>
+			<li>{{title}}</li>
+			<li>{{expiration_date}}</li>
+			<li>{{list_url}}</li>
+			<li>{{user}}</li>
+		</ul>
+	{{/data}}
+
+
 	</script>
 
 

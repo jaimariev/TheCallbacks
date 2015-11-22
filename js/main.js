@@ -6,13 +6,28 @@ $(document).ready(function(){
     console.log(resp);
   });
 
-//   Trying to set up a header but have no clue how
-//   sendAuthentication = function (xhr) {
-//   var user = "nick";// your actual username
-//   var pass = "123";// your actual password
-//   var token = user.concat(":", pass);
-//   xhr.setRequestHeader('Authorization', ("Basic ".concat(btoa(token))));
-// }
+var login = function() {
+  var username = $("#username").val();
+  var password = $("#password").val();
+
+          $.ajax({
+            type: 'POST',
+            url: 'https://pacific-gorge-8441.herokuapp.com/api/api-token-auth/',
+            data: {'username': username,
+                    'password': password},
+            dataType: "json"
+        }).then(function(resp){
+           $.ajaxSetup({
+               beforeSend: function(xhr, settings) {
+                 xhr.setRequestHeader("Authorization", "Token " + resp['token']);
+               }
+           });
+      });
+    }
+$("#loginBtn").on('click', function(e) {
+  e.preventDefault();
+  login();
+});
 
 
   var Router = Backbone.Router.extend({
@@ -62,7 +77,8 @@ $(document).ready(function(){
         console.log("nope", err);
       }
     });
-    $("#addButton").on('click', function() {
+    $("#addButton").on('click', function(e) {
+      e.preventDefault();
       var itemAdd = new itemContainer();
       itemAdd.set ({
         item_url: $("#addItem").val(),
@@ -140,10 +156,10 @@ $(document).ready(function(){
     initialize: function(){
     },
     defaults: {
-      item: null,
+      title: null,
       expiration_date: null,
       list_url: null,
-      url: null
+      user: null
     },
     Model: wishContainer,
     url: 'https://pacific-gorge-8441.herokuapp.com/api/wishlists/'
@@ -157,29 +173,30 @@ $(document).ready(function(){
     var wishCollection = new wishContainer();
     wishCollection.fetch ({
       success: function(resp){
-        var data2obj = {"data": resp.toJSON()};
+        var data2obj = {"data": resp.toJSON().results};
         console.log(data2obj);
         var wishTemplate = $("#wishTemplate").text();
         var wishHTML = Mustache.render(wishTemplate, data2obj);
+        $("#wishContainer").html(wishHTML);
         console.log("success", resp);
       },
       error: function(err){
         console.log("nope", err);
       }
     });
-
-    wishCollection.set ({
-      item: $("#addWishItem").val(),
+    $("#addButton2").on('click', function(e) {
+      e.preventDefault();
+      console.log("test");
+      var wishAdd = new wishContainer();
+      wishAdd.set ({
+      title: $("#addWishTitle").val(),
       expiration_date: $("#addExpirationDate").val(),
       list_url: $("#addListUrl").val(),
-      url: $("#addWishUrl").val()
-    })
-     $("#addWishItem").val("");
-      $("#addExpirationDate").val("");
-      $("#addListUrl").val("");
-      $("#addWishUrl").val("");
+      user: $("#addWishUser").val()
+    });
 
-    wishCollection.save (null, {
+    wishAdd.save (null, {
+      url: "https://pacific-gorge-8441.herokuapp.com/api/wishlists/",
      succes: function(resp) {
       console.log("succes", resp);
      },
@@ -187,7 +204,11 @@ $(document).ready(function(){
       console.log("nope", err);
      }
     });
-
+      $("#addWishTitle").val("");
+      $("#addExpirationDate").val("");
+      $("#addListUrl").val("");
+      $("#addWishUser").val("");
+    });
 
     //$("#formContainer").hide();
     //$("#itemContainer").hide();
@@ -196,8 +217,8 @@ $(document).ready(function(){
     $("#mainContainer").hide();
     $("#formContainer").hide();
 
-    });
-
   });
+});
+
 
 
