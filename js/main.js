@@ -25,9 +25,11 @@ var login = function() {
            });
       });
     }
-    $("#logIn").on('click', function(e) {
-      e.preventDefault();
+    $("#logIn").on('click', function() {
       login();
+      router.navigate("/");
+      console.log("test");
+
       $("#mainContainer").show();
       $("#itemContainer").hide();
       $("#newItemForm").hide();
