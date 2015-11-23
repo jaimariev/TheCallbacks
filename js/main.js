@@ -1,10 +1,11 @@
 $(document).ready(function(){
 
-  $.ajax({
-    url: 'https://pacific-gorge-8441.herokuapp.com/api/items'
-  }).then(function(resp){
-    console.log(resp);
-  });
+      $('body').on('click','a', function(e){
+  e.preventDefault();
+  var href = $(this).attr('href');
+  href = href.substr(1);
+  router.navigate(href, {trigger:true});
+});
 
 var login = function() {
   var username = $("#username").val();
@@ -24,10 +25,15 @@ var login = function() {
            });
       });
     }
-$("#loginBtn").on('click', function(e) {
-  e.preventDefault();
-  login();
-});
+    $("#logIn").on('click', function(e) {
+      e.preventDefault();
+      login();
+      $("#mainContainer").show();
+      $("#itemContainer").hide();
+      $("#newItemForm").hide();
+      $("#wishlistForm").hide();
+      $("#formContainer").hide();
+    });
 
 
   var Router = Backbone.Router.extend({
@@ -35,7 +41,9 @@ $("#loginBtn").on('click', function(e) {
       Backbone.history.start({pushState: true});
     },
     routes: {
-      "item/:id": "item",
+      "home": "home",
+      "login": "login",
+      "item": "item",
       "add": "add",
       "": "index"
     }
@@ -77,6 +85,7 @@ $("#loginBtn").on('click', function(e) {
         console.log("nope", err);
       }
     });
+
     $("#addButton").on('click', function(e) {
       e.preventDefault();
       var itemAdd = new itemContainer();
@@ -106,32 +115,34 @@ $("#loginBtn").on('click', function(e) {
       $("#addWishList").val("");
     });
 
-  var pledgeContainer = Backbone.Model.extend({
-    initialize: function(){
-    },
-    defaults: {
-      item: null,
-      pledge_amount: null,
-      user: null
-    },
-    Model: pledgeContainer,
-    url: 'https://pacific-gorge-8441.herokuapp.com/api/pledges/'
-  });
 
-  var pledgeContainers = Backbone.Collection.extend({
-    Model: pledgeContainer
-  });
 
-  var pledgeCollection = new pledgeContainer();
+  // var pledgeContainer = Backbone.Model.extend({
+  //   initialize: function(){
+  //   },
+  //   defaults: {
+  //     item: null,
+  //     pledge_amount: null,
+  //     user: null
+  //   },
+  //   Model: pledgeContainer,
+  //   url: 'https://pacific-gorge-8441.herokuapp.com/api/pledges/'
+  // });
 
-  pledgeCollection.fetch ({
-    success: function(resp) {
-      console.log("success", resp);
-    },
-    error: function(err) {
-      console.log("nope", err);
-    }
-  });
+  // var pledgeContainers = Backbone.Collection.extend({
+  //   Model: pledgeContainer
+  // });
+
+  // var pledgeCollection = new pledgeContainer();
+
+  // pledgeCollection.fetch ({
+  //   success: function(resp) {
+  //     console.log("success", resp);
+  //   },
+  //   error: function(err) {
+  //     console.log("nope", err);
+  //   }
+  // });
 
   // pledgeCollection.set ({
   //   beforeSend: sendAuthentication,
@@ -162,7 +173,7 @@ $("#loginBtn").on('click', function(e) {
       user: null
     },
     Model: wishContainer,
-    url: 'https://pacific-gorge-8441.herokuapp.com/api/wishlists/'
+    url: 'https://pacific-gorge-8441.herokuapp.com/api/wishlists'
   });
 
   var wishContianers = Backbone.Collection.extend({
@@ -184,6 +195,7 @@ $("#loginBtn").on('click', function(e) {
         console.log("nope", err);
       }
     });
+
     $("#addButton2").on('click', function(e) {
       e.preventDefault();
       console.log("test");
@@ -192,7 +204,7 @@ $("#loginBtn").on('click', function(e) {
       title: $("#addWishTitle").val(),
       expiration_date: $("#addExpirationDate").val(),
       list_url: $("#addListUrl").val(),
-      user: $("#addWishUser").val()
+
     });
 
     wishAdd.save (null, {
@@ -207,18 +219,51 @@ $("#loginBtn").on('click', function(e) {
       $("#addWishTitle").val("");
       $("#addExpirationDate").val("");
       $("#addListUrl").val("");
-      $("#addWishUser").val("");
+
     });
 
-    //$("#formContainer").hide();
-    //$("#itemContainer").hide();
+    $("#addNewItem").on('click', function() {
+      $("#newItemForm").show();
+      $("#itemContainer").hide();
+    });
+
+
+    router.on("route:index", function() {
+      $("#formContainer").show();
+      $("#itemContainer").hide();
+      $("#newItemForm").hide();
+      $("#wishlistForm").hide();
+      $("#formContainer").hide();
+    });
+
+    router.on("route:home", function() {
+      $("#mainContainer").show();
+      $("#itemContainer").hide();
+      $("#newItemForm").hide();
+      $("#wishlistForm").hide();
+      $("#formContainer").hide();
+      $("#addNewItem").hide();
+    });
+
+    router.on("route:item", function() {
+      $("#mainContainer").hide();
+      $("#itemContainer").show();
+      $("#addNewItem").show();
+    });
+
+    router.on("route:add", function() {
+      $("#wishlistForm").show();
+    });
+
     $("#inputBtn").on('click', function() {
-    $("#itemPage").show();
     $("#mainContainer").hide();
     $("#formContainer").hide();
+    });
 
-  });
+    $("#mainContainer").hide();
+    $("#itemContainer").hide();
+    $("#newItemForm").hide();
+    $("#wishlistForm").hide();
+    $("#addNewItem").hide();
+    $("#formContainer").show();
 });
-
-
-

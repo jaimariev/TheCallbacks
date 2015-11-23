@@ -1,0 +1,181 @@
+/*login & registration forms*/
+#formContainer{
+    width: 100%;
+    height: 550px;
+}
+#loginContainer {
+    position: fixed;
+    display: inline-block;
+    width: 340px;
+    height: 280px;
+    top: 20%;
+    left: 20%;
+  background: #fff;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+}
+#signUpContainer {
+    position: fixed;
+    width: 340px;
+    height: 380px;
+    top: 20%;
+    left: 50%;
+    margin: auto;
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+}
+#formContainer form{
+  margin: 0 auto;
+  margin-top: 20px;
+}
+#formContainer label{
+  color: #00B897;
+  display: inline-block;
+  margin-left: 18px;
+  padding-top: 10px;
+  font-size: 14px;
+}
+#formContainer input{
+  font-size: 12px;
+  outline: none;
+}
+#formContainer input[type=text],
+input[type=password] {
+    color: #777;
+    padding-left: 10px;
+    margin: 10px;
+    margin-top: 12px;
+    margin-left: 18px;
+    width: 290px;
+    height: 35px;
+    border: 1px solid #c7d0d2;
+    border-radius: 2px;
+}
+#lower {
+    background: #ecf2f5;
+    width: 100%;
+    height: 69px;
+    margin-top: 20px;
+}
+#formContainer input[type=checkbox] {
+    margin-left: 20px;
+    margin-top: 30px;
+}
+#formContainer .check {
+    margin-left: 3px;
+}
+#formContainer input[type=submit] {
+    float: right;
+    margin-right: 20px;
+    margin-top: 20px;
+    width: 80px;
+    height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #acd6ef;
+    border-radius: 30px;
+    border: 1px solid #66add6;
+    cursor: pointer;
+}
+/*add new wishlist form */
+#wishlistForm{
+    width: 50%;
+    height: 500px;
+    margin: auto;
+}
+#wishForm{
+    position: fixed;
+    display: inline-block;
+    width: 320px;
+    height: 280px;
+    top: 22%;
+    left: 35%;
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+}
+#wishForm label{
+    position: relative;
+    color: #00B897;
+    left: 25px;
+    top: 25px;
+    font-family: helvetica;
+    font-size: 13px;
+}
+#wishForm input{
+    position: relative;
+    width: 70%;
+    left: 20px;
+    top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    font-size: 12px;
+    padding-top: 5px;
+    bottom: 10px;
+    margin-top: 10px;
+}
+#wishForm input[type=submit]{
+    position: relative;
+    width: 30%;
+    top: 10%;
+}
+/*add new item form */
+#newItemForm{
+    width: 60%;
+    height: 500px;
+    margin:auto;
+}
+#newItemContainer{
+    position: fixed;
+    display: inline-block;
+    width: 360px;
+    height: 360px;
+    top: 22%;
+    left: 35%;
+    background: #4be7a9;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+}
+#newItemContainer p{
+    font-size: 15px;
+    font-family: helvetica;
+    position: relative;
+    margin-left: 10px;
+    margin-top: 10px;
+    color: white;
+}
+#newItemContainer label{
+    position: relative;
+    color: white;
+    font-family: helvetica;
+    font-size: 13px;
+    left: 15px;
+    top: 5px;
+}
+#newItemContainer input{
+    position: relative;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    font-size: 12px;
+    padding-top: 5px;
+    margin-top: 10px;
+    left: 20px;
+}
+#newItemContainer input[type=submit]{
+    position: relative;
+    width: 20%;
+    top: 10%;
+    border: 1px solid white;
+    background: #00B897;
+}

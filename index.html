@@ -1,35 +1,41 @@
 <!DOCTYPE html>
 <html lang="English">
 <head>
-
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title> All I Want</title>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link rel="stylesheet" type="text/css" href="css/login.css">
-	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/forms.css">
+	<link rel="stylesheet" type="text/css" href="css/itemPage.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 <body>
 
 	<div id="navBar">
-      	<h3 id="title"> All I Want </h3>
-      	<h3 id="userName"> Username </h3>
+		<ul>
+			<li><a href="/home"><img src="images/money-tree-logo-dizzylineNoWhite.png" id="logo"/></a></li>
+	      	<li><p id="discover"><a href="#">Discover</a></p></li>
+	      	<li><p id="about"><a href="#">About Us</a></p></li>
+	 		<li><span class="icon"><i class="fa fa-search"></i></span><input type="search" id="search" value="Search..." /></li>
+	    	<li><h3 id="userName"> Username</h3></li>
+	    </ul>
     </div>
+
 	<div id="formContainer">
 		<div id="loginContainer">
 			<form>
 				<label for="Username">Username:</label>
-			  	<input id="username" type="text" name="email" placeholder="Your Email">
-				<label  for=password>Password:</label>
-			  	<input id="password" type="text" name="pass" placeholder="Password"><br><br>
+			  	<input type="text" name="email" placeholder="Your Username">
+				<label for=password>Password:</label>
+			  	<input type="text" name="pass" placeholder="Password"><br><br>
 			  	<input type="checkbox"><label for="checkbox">Keep me logged in</label>
-			  	<input id="loginBtn" type="submit" value="Log In">
+			  	<input id="logIn" type="submit" value="Log In">
 		  	</form>
 		</div>
 		<div id="signUpContainer">
 			<form>
-				<label for=signup>Sign Up</label>
-		  		<label for=Email>Email:</label><br>
+				<label for="signup">Sign Up</label>
+		  		<label for="Email">Email:</label><br>
 		  		<input type="text" name="EMAIL" placeholder="New Email">
 				<label for="newpass">New Password:</label>
 		  		<input type="text" name="NP" placeholder="Your Password">
@@ -47,16 +53,13 @@
   			<div id="list">
   				<h4>My List</h4>
   			</div>
+
   			<div id="iconData">
-  				<ul>
-			   		<li><a href="#">Fund my Birthday</a></li>
-			    	<li><a href="#">Fund my Holiday</a></li>
-			    	<li><a href="#">Fund my Wedding</a></li>
-			    	<li><a href="#">Fund my Vacation</a></li>
-			    </ul>
+  			<div id="wishContainer"></div>
+
 			</div>
 			<div id="inputBtn">
-		    	<input type="button" value="Add"/>
+		    	<a href="/add"> <input type="button" value="Add"/></a>
 	    	</div>
     	</div>
 	  	<div id="pledgeContainer">
@@ -81,6 +84,40 @@
 		    </div>
 	    </div>
 	</div>
+	<div id="itemContainer"></div>
+
+
+	<div id="wishlistForm">
+		<form id="wishForm">
+			<label for="title">Title:</label><br/>
+			<input type="text" placeholder="Enter New List Title"/><br/>
+			<label for="list url">List URL:</label><br/>
+			<input type="text" placeholder="Enter List URL"/><br/>
+			<label for="datepicker">Expiration Date:</label><br/>
+			<input type="date" id="datepicker"/><br/>
+			<input type="submit"/>
+		</form>
+	</div>
+
+	<div id="newItemForm">
+    	<div id="newItemContainer">
+    		<p> Add a new item</p>
+    		<form>
+		        <label for="item">Item:</label><br/>
+		        <input id="addTitle" type="text" placeholder="Title" /><br/>
+		        <label for="price">Price:</label><br/>
+		        <input id="addPrice" type="text" placeholder="Price"/><br/>
+		        <label for="url">Item URL:</label><br/>
+		        <input id="addItem" type="text" placeholder="Item URL" /><br/>
+		        <label for="img">Image URL:</label><br/>
+		        <input id="addImage" type="text" placeholder="Image URL" /><br/>
+		         <label for="wishlist">Wish List:</label><br/>
+		         <input id="addWishList" type="text" placeholder="Wish List" /><br/>
+		        <input id="addButton" type="submit" value="Submit"/><br/>
+    		</form>
+   	 	</div>
+	</div>
+	<button id="addNewItem" type="submit"> Add New </button>
 	<div id="footer">
 		<a href="http://www.facebook.com"><i class="fa fa-facebook-official"></i></a>
 		<a href="http://www.instagram.com"><i class="fa fa-instagram"></i></a>
@@ -88,61 +125,37 @@
 		<p>&copy; The Callbacks 2015</p>
 	</div>
 
-	  <div class="addPage">
-    <form id="addForm">
-      <input id="addItem" value="" type='text' placeholder="Item Url">
-      </br><input id="addImage" value="" type='text' placeholder="Image Url">
-      </br><input id="addTitle" value="" type='text' placeholder="Title">
-      </br><input id="addPrice" value="" type='text' placeholder="Price">
-      </br><input id="addWishList" value="" type='text' placeholder="Wish List">
-      </br><textarea id="addDescription" value="" type='textarea' placeholder="Description"></textarea>
-      <button id="addButton" type="submit">Add</button>
-    </form>
-  </div>
 
-  <div class="addWish">
-    <form id="addWishForm">
-      <input id="addWishTitle" value="" type='text' placeholder="Title">
-      </br><input id="addExpirationDate" value="" type='input' placeholder="Expiration Date">
-      </br><input id="addListUrl" value="" type='text' placeholder="List URL">
-      </br><input id="addWishUser" value="" type='text' placeholder="User">
-      <button id="addButton2" type="submit">Add</button>
-    </form>
-  </div>
-
-	<div id ="itemContainer"></div>
-	<div id ="wishContainer"></div>
 
 	<script type="x-tmpl-mustache" id="itemTemplate">
 	{{#data}}
-	<ul>
-		<li> {{item_url}} </li>
-		<li><img src="{{image_url}}" </li>
-		<li> {{title}} </li>
-		<li> {{description}} </li>
-		<li> {{price}} </li>
-	</ul>
+	<div id="itemCard">
+		<img src="{{image_url}}"/>
+		<p>Item Name: {{title}}</p>
+		<p>Item URL: <a href="{{item_url}}">Link to which store item is from</a></p>
+		<p>Item Description: {{description}}</p>
+		<p>Item Price: {{price}}</p>
+	</div>
 	{{/data}}
+
 	</script>
 
-	<script type="x-tmpl-mustache" id="wishTemplate">
+
+<script type="x-tmpl-mustache" id="wishTemplate">
 	{{#data}}
+	<div id="list">
 		<ul>
-			<li>{{title}}</li>
-			<li>{{expiration_date}}</li>
-			<li>{{list_url}}</li>
-			<li>{{user}}</li>
+		<li><a href="/item"<p>{{title}}</p></a></li>
 		</ul>
+		</div>
 	{{/data}}
-
-
 	</script>
 
 
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.0/mustache.min.js"></script>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.3/backbone-min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.0/mustache.min.js"></script>
 	<script src="js/main.js"></script>
 </body>
 </html>

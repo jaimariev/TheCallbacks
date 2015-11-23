@@ -1,30 +1,85 @@
+
+a{
+    text-decoration: none;
+}
+a:visited{
+    color:#25762F;
+}
+a:link {
+    color: #25762F;
+}
+#logo{
+    position: relative;
+    display: inline-block;
+    width: 220px;
+    height: 150px;
+    top: 61px;
+    right: 40px;
+}
 #navBar {
     position: relative;
     width: 100%;
-    height: 50px;
-    margin: 0;
+    height: 60px;
+    margin: 0px;
     border-bottom: 2px solid black;
 }
-
+#navBar ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#navBar li{
+    position: relative;
+    display: inline-block;
+    bottom: 110px;
+    margin-left: 25px;
+    right: 20px;
+}
+#navBar span input{
+    position: relative;
+    display: inline-block;
+}
 #title{
     position: inherit;
     display: inline-block;
     margin: 0px;
     font-size: 30px;
 }
-
-#userName{
-    display: inline-block;
-    float: right;
-    margin: 0px;
+#discover{
+    position: relative;
+    font-size: 20px;
 }
-
+#about {
+    position: relative;
+    font-size: 20px;
+}
+#search {
+    width: 300px;
+    height: 40px;
+    font-size: 15px;
+    font-style: italic;
+    color:#25762F;
+    padding-left: 30px;
+    border-radius: 5px;
+    margin-left: 200px;
+}
+.icon{
+    position: absolute;
+    color: #25762F;
+    font-size: 20px;
+    top: 7px;
+    left: 207px;
+}
+#userName{
+    position: relative;
+    display: inline-block;
+    margin: 0px;
+    left: 100px;
+}
 #mainContainer {
     position: relative;
     width: 100%;
-    overflow: scroll;
 }
-
 #welcome{
     position: relative;
     display: block;
@@ -33,44 +88,37 @@
     margin: 0;
     left: 5px;
 }
-
 #iconContainer{
     width: 30%;
     height: 450px;
     display: inline-block;
     position: relative;
     margin: 0;
-    left: 10px;    
+    left: 10px;
 }
-
 #list h4{
     font-size: 25px;
     margin: 5px;
     position: relative;
 }
-
 #iconData{
     width: 100%;
     height: 400px;
     overflow: scroll;
 }
-
 #iconData li{
     list-style: none;
     margin-top: 10px;
 }
-
 #iconData a{
     position: relative;
     font-size: 18px;
     text-decoration: none;
 }
-
 #inputBtn {
     width: 100%;
     height: 50px;
 }
-
 #inputBtn input{
     position: relative;
     width: 60px;
@@ -82,7 +130,6 @@
     left: 75%;
     outline: none;
 }
-
 #pledgeContainer{
     width: 69%;
     height: 500px;
@@ -91,7 +138,6 @@
     left: 5px;
     border-left: 1px solid black;
 }
-
 #pledges h4{
     display: inline-block;
     margin: 0;
@@ -100,18 +146,15 @@
     left: 10px;
     font-size: 25px;
 }
-
 #pledgeData {
     width: 100%;
     height: 400px;
     overflow: scroll;
     display: inline-block;
 }
-
 hr {
     margin: 0px;
 }
-
 #totalPledges{
     position: relative;
     display: block;
@@ -119,14 +162,12 @@ hr {
     height: 50px;
     margin: 0;
 }
-
 #totalHeader p{
     position: relative;
     margin: 0;
     left: 10px;
     top: 5px;
 }
-
 #footer{
     width: 100%;
     height: 60px;
@@ -134,22 +175,19 @@ hr {
     border-top: 2px solid black;
     text-align: center;
 }
-
 #footer h3{
     position: relative;
     display: inline-block;
     margin: 0;
     width: 100px;
 }
-
 #footer p{
     display: inline-block;
 }
-
 #footer a{
     margin: 10px;
 }
-
 #pledgeData img{
     margin: 20px;
 }
+
