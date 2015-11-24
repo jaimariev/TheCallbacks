@@ -19,7 +19,7 @@ $(document).ready(function(){
   $("#loginContainer form").on('submit', function(e){
     e.preventDefault();
     login();
-  })
+  });
 
 var login = function() {
   var username = $("#username").val();
@@ -34,10 +34,10 @@ var login = function() {
       $.cookie('authToken', resp['token']);
        $.ajaxSetup({
            beforeSend: function(xhr, settings) {
-
-             xhr.setRequestHeader("Authorization", "Token " + $.cookie('token'));
+             xhr.setRequestHeader("Authorization", "Token " +resp['token']);
 
            }
+
        });
   });
 };
