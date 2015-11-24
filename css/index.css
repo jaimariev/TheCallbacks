@@ -1,0 +1,21 @@
+#stripeContainer{
+width: 30%;
+height:200px;
+background-color: aqua;
+  border: 6px solid black;
+  border-radius: 5px;
+}
+#stripeContainer span{
+  color:blue;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+#stripeContainer button{
+  position: relative;
+  left: 100px;
+  background-color: gray;
+  border-radius: 5px;
+}
+#stripeContainer input{
+  border-radius: 5px;
+}

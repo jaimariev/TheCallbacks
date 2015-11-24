@@ -1,42 +1,46 @@
+
+if ($.cookie('authToken')) {
+  $.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+      xhr.setRequestHeader("Authorization", "Token " + $.cookie('authToken'));
+    }
+  });
+}
+
 $(document).ready(function(){
 
-      $('body').on('click','a', function(e){
+  $('body').on('click','a', function(e){
   e.preventDefault();
   var href = $(this).attr('href');
   href = href.substr(1);
   router.navigate(href, {trigger:true});
 });
 
+  $("#loginContainer form").on('submit', function(e){
+    e.preventDefault();
+    login();
+  })
+
 var login = function() {
   var username = $("#username").val();
   var password = $("#password").val();
+      $.ajax({
+        method: 'POST',
+        url: 'https://pacific-gorge-8441.herokuapp.com/api/api-token-auth/',
+        data: {'username': username,
+                'password': password},
+        dataType: "json"
+    }).then(function(resp){
+      $.cookie('authToken', resp['token']);
+       $.ajaxSetup({
+           beforeSend: function(xhr, settings) {
 
-          $.ajax({
-            type: 'POST',
-            url: 'https://pacific-gorge-8441.herokuapp.com/api/api-token-auth/',
-            data: {'username': username,
-                    'password': password},
-            dataType: "json"
-        }).then(function(resp){
-           $.ajaxSetup({
-               beforeSend: function(xhr, settings) {
-                 xhr.setRequestHeader("Authorization", "Token " + resp['token']);
-               }
-           });
-      });
-    }
-    $("#logIn").on('click', function() {
-      login();
-      router.navigate("/");
-      console.log("test");
+             xhr.setRequestHeader("Authorization", "Token " + $.cookie('token'));
 
-      $("#mainContainer").show();
-      $("#itemContainer").hide();
-      $("#newItemForm").hide();
-      $("#wishlistForm").hide();
-      $("#formContainer").hide();
-    });
-
+           }
+       });
+  });
+};
 
   var Router = Backbone.Router.extend({
     initialize: function() {
@@ -117,53 +121,53 @@ var login = function() {
       $("#addWishList").val("");
     });
 
+  var pledgeContainer = Backbone.Model.extend({
+    initialize: function(){
+    },
+    defaults: {
+      item: null,
+      pledge_amount: null,
+      token: null
+    },
+    Model: pledgeContainer,
+    url: 'https://pacific-gorge-8441.herokuapp.com/api/pledges/'
+  });
+
+  var pledgeContainers = Backbone.Collection.extend({
+    Model: pledgeContainer
+  });
+
+  var pledgeCollection = new pledgeContainer();
+
+  pledgeCollection.fetch ({
+    success: function(resp) {
+      console.log("success pledge", resp);
+    },
+    error: function(err) {
+      console.log("nope", err);
+    }
+  });
+  var pledgeAdd = new pledgeContainer();
+  pledgeAdd.set ({
+    item: $("#itemNumber").val(),
+    pledge_amount: $("#pledgeAmount").val(),
+    token: $("#stripeToken").val()
+  })
+
+    $("#itemNumber").val("");
+    $("#pledgeAmount").val("");
+    $("#stripeToken").val("");
 
 
-  // var pledgeContainer = Backbone.Model.extend({
-  //   initialize: function(){
-  //   },
-  //   defaults: {
-  //     item: null,
-  //     pledge_amount: null,
-  //     user: null
-  //   },
-  //   Model: pledgeContainer,
-  //   url: 'https://pacific-gorge-8441.herokuapp.com/api/pledges/'
-  // });
-
-  // var pledgeContainers = Backbone.Collection.extend({
-  //   Model: pledgeContainer
-  // });
-
-  // var pledgeCollection = new pledgeContainer();
-
-  // pledgeCollection.fetch ({
-  //   success: function(resp) {
-  //     console.log("success", resp);
-  //   },
-  //   error: function(err) {
-  //     console.log("nope", err);
-  //   }
-  // });
-
-  // pledgeCollection.set ({
-  //   beforeSend: sendAuthentication,
-  //   item: $("#addPledgeItem").val(),
-  //   pledge_amount: $("#addPledgeAmount").val(),
-  //   user: $("#addUser").val()
-  // })
-  //   $("#addPledgeItem").val("");
-  //   $("#addPledgeAmount").val("");
-  //   $("#addUser").val("");
-
-  // pledgeCollection.save(null, {
+  // pledgeAdd.save(null, {
   //   success: function(resp) {
   //     console.log("success", resp)
   //   },
   //   error: function(err) {
-  //     console.log("nope", err)
+  //     console.log("nope pledge", err)
   //   }
   // });
+
 
   var wishContainer = Backbone.Model.extend({
     initialize: function(){
@@ -175,7 +179,7 @@ var login = function() {
       user: null
     },
     Model: wishContainer,
-    url: 'https://pacific-gorge-8441.herokuapp.com/api/wishlists'
+    url: 'https://pacific-gorge-8441.herokuapp.com/api/wishlists/'
   });
 
   var wishContianers = Backbone.Collection.extend({
@@ -245,7 +249,7 @@ var login = function() {
       $("#wishlistForm").hide();
       $("#formContainer").hide();
       $("#addNewItem").hide();
-    });
+     });
 
     router.on("route:item", function() {
       $("#mainContainer").hide();

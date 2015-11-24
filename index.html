@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="css/forms.css">
 	<link rel="stylesheet" type="text/css" href="css/itemPage.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 <body>
 
@@ -25,9 +26,9 @@
 		<div id="loginContainer">
 			<form>
 				<label for="Username">Username:</label>
-			  	<input type="text" name="email" placeholder="Your Username">
+			  	<input id="username" type="text" name="email" placeholder="Your Username">
 				<label for=password>Password:</label>
-			  	<input type="text" name="pass" placeholder="Password"><br><br>
+			  	<input id="password" type="text" name="pass" placeholder="Password"><br><br>
 			  	<input type="checkbox"><label for="checkbox">Keep me logged in</label>
 			  	<input id="logIn" type="submit" value="Log In">
 		  	</form>
@@ -96,7 +97,7 @@
 			<input type="text" placeholder="Enter List URL"/><br/>
 			<label for="datepicker">Expiration Date:</label><br/>
 			<input type="date" id="datepicker"/><br/>
-			<input type="submit"/>
+			<input id = "addButton2"type="submit"/>
 		</form>
 	</div>
 
@@ -117,6 +118,38 @@
 		        <input id="addButton" type="submit" value="Submit"/><br/>
     		</form>
    	 	</div>
+	</div>
+
+	<div id="stripeContainer">
+<form action="" method="POST" id="payment-form">
+  <span class="payment-errors"></span>
+  <div class="form-row1">
+    <label>
+      <span>Card Number</span>
+      <input type="text" size="20" data-stripe="number" />
+    </label>
+  </div>
+  <div class="form-row2">
+    <label>
+      <span>CVC</span>
+      <input type="text" size="4" data-stripe="cvc"/>
+    </label>
+  </div>
+  <div class="form-row3">
+    <label>
+      <span>Expiration (MM/YYYY)</span>
+      <input type="text" size="2" data-stripe="exp-month"/>
+    </label>
+    <span> / </span>
+    <input type="text" size="4" data-stripe="exp-year"/>
+  </div>
+  <div class="form-row4">
+	  <span>Pledge Amount</span>
+  <input id="pledgeAmount" type="text" >
+  <input id="itemNumber" type="text">
+  </div>
+  <button type="submit">Pledge</button>
+</form>
 	</div>
 
 	<button id="addNewItem" type="submit"> Add New </button>
@@ -155,9 +188,12 @@
 
 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.3/backbone-min.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.0/mustache.min.js"></script>
 	<script src="js/main.js"></script>
+	<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+	<script src="js/index.js"></script>
 </body>
 </html>
