@@ -1,6 +1,6 @@
 #itemContainer {
   display: inline-block;
-  margin-left: 20px;
+
 }
 #itemCard {
   display: inline-block;
@@ -33,3 +33,4 @@
     border-radius: 5px;
     border: 1px solid black;
 }
+

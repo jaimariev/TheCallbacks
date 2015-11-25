@@ -29,7 +29,7 @@
 				<label for="Username">Username:</label>
 			  	<input id="username" type="text" name="email" placeholder="Your Username">
 				<label for=password>Password:</label>
-			  	<input id="password" type="text" name="pass" placeholder="Password"><br><br>
+			  	<input id="password" type="password" name="pass" placeholder="Password"><br><br>
 			  	<input type="checkbox"><label for="checkbox">Keep me logged in</label>
 			  	<input id="logIn" type="submit" value="Log In">
 		  	</form>
@@ -93,11 +93,11 @@
 	<div id="wishlistForm">
 		<form id="wishForm">
 			<label for="title">Title:</label><br/>
-			<input type="text" placeholder="Enter New List Title"/><br/>
+			<input id="addWishTitle"type="text" placeholder="Enter New List Title"/><br/>
 			<label for="list url">List URL:</label><br/>
-			<input type="text" placeholder="Enter List URL"/><br/>
+			<input id="addListUrl"type="text" placeholder="Enter List URL"/><br/>
 			<label for="datepicker">Expiration Date:</label><br/>
-			<input type="date" id="datepicker"/><br/>
+			<input id="addExpirationDate"type="text" placeholder="Year-MM-DD"id="datepicker"/><br/>
 			<input id = "addButton2"type="submit"/>
 		</form>
 	</div>
@@ -122,6 +122,8 @@
     		</form>
    	 	</div>
 	</div>
+
+  <button id="addNewItem" type="submit"> Add New </button>
 
 	<div id="stripeContainer">
 <form action="" method="POST" id="payment-form">
@@ -155,15 +157,14 @@
 </form>
 	</div>
 
-	<button id="addNewItem" type="submit"> Add New </button>
-	<div id="footer">
+
+
+  <div id="footer">
 		<a href="http://www.facebook.com"><i class="fa fa-facebook-official"></i></a>
 		<a href="http://www.instagram.com"><i class="fa fa-instagram"></i></a>
 		<a href="http://www.twitter.com"><i class="fa fa-twitter"></i></a>
 		<p>&copy; The Callbacks 2015</p>
 	</div>
-
-
 
 	<script type="x-tmpl-mustache" id="itemTemplate">
 	{{#data}}

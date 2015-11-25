@@ -1,4 +1,3 @@
-
 if ($.cookie('authToken')) {
   $.ajaxSetup({
     beforeSend: function(xhr, settings) {
@@ -6,7 +5,6 @@ if ($.cookie('authToken')) {
     }
   });
 }
-
 $(document).ready(function(){
 
   $('body').on('click','a', function(e){
@@ -19,6 +17,10 @@ $(document).ready(function(){
   $("#loginContainer form").on('submit', function(e){
     e.preventDefault();
     login();
+    $("#mainContainer").show();
+    $("#loginContainer").hide();
+    $("#formContainer").hide();
+    $("#signUpContainer").hide();
   });
 
 var login = function() {
@@ -121,42 +123,47 @@ var login = function() {
       $("#addWishList").val("");
     });
 
-  var pledgeContainer = Backbone.Model.extend({
-    initialize: function(){
-    },
-    defaults: {
-      item: null,
-      pledge_amount: null,
-      token: null
-    },
-    Model: pledgeContainer,
-    url: 'https://pacific-gorge-8441.herokuapp.com/api/pledges/'
-  });
+  // var pledgeContainer = Backbone.Model.extend({
+  //   initialize: function(){
+  //   },
+  //   defaults: {
+  //     item: null,
+  //     pledge_amount: null,
+  //     token: null
+  //   },
+  //   Model: pledgeContainer,
+  //   url: 'https://pacific-gorge-8441.herokuapp.com/api/pledges/'
+  // });
 
-  var pledgeContainers = Backbone.Collection.extend({
-    Model: pledgeContainer
-  });
+  // var pledgeContainers = Backbone.Collection.extend({
+  //   Model: pledgeContainer
+  // });
 
-  var pledgeCollection = new pledgeContainer();
+  // var pledgeCollection = new pledgeContainer();
 
-  pledgeCollection.fetch ({
-    success: function(resp) {
-      console.log("success pledge", resp);
-    },
-    error: function(err) {
-      console.log("nope", err);
-    }
-  });
-  var pledgeAdd = new pledgeContainer();
-  pledgeAdd.set ({
-    item: $("#itemNumber").val(),
-    pledge_amount: $("#pledgeAmount").val(),
-    token: $("#stripeToken").val()
-  })
+  // pledgeCollection.fetch ({
+  //   success: function(resp) {
+  //     var data2Obj = {"data": resp.toJSON().results};
+  //       console.log(data2Obj);
+  //       var pledgeTemplate = $("#pledgeTemplate").text();
+  //       var pledgeHTML = Mustache.render(pledgeTemplate, data2Obj);
+  //       $("#pledgeContainer").html(pledgeHTML);
+  //     console.log("success pledge", resp);
+  //   },
+  //   error: function(err) {
+  //     console.log("nope", err);
+  //   }
+  // });
+  // var pledgeAdd = new pledgeContainer();
+  // pledgeAdd.set ({
+  //   item: $("#itemNumber").val(),
+  //   pledge_amount: $("#pledgeAmount").val(),
+  //   token: $("#stripeToken").val()
+  // })
 
-    $("#itemNumber").val("");
-    $("#pledgeAmount").val("");
-    $("#stripeToken").val("");
+  //   $("#itemNumber").val("");
+  //   $("#pledgeAmount").val("");
+  //   $("#stripeToken").val("");
 
 
   // pledgeAdd.save(null, {
@@ -190,10 +197,10 @@ var login = function() {
     var wishCollection = new wishContainer();
     wishCollection.fetch ({
       success: function(resp){
-        var data2obj = {"data": resp.toJSON().results};
-        console.log(data2obj);
+        var data3obj = {"data": resp.toJSON().results};
+        console.log(data3obj);
         var wishTemplate = $("#wishTemplate").text();
-        var wishHTML = Mustache.render(wishTemplate, data2obj);
+        var wishHTML = Mustache.render(wishTemplate, data3obj);
         $("#wishContainer").html(wishHTML);
         console.log("success", resp);
       },
@@ -266,6 +273,8 @@ var login = function() {
     $("#formContainer").hide();
     });
 
+
+    $("#stripeContainer").hide();
     $("#mainContainer").hide();
     $("#itemContainer").hide();
     $("#newItemForm").hide();

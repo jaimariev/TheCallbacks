@@ -138,6 +138,7 @@ a:link {
     left: 5px;
     border-left: 1px solid black;
 }
+
 #pledges h4{
     display: inline-block;
     margin: 0;
@@ -146,6 +147,7 @@ a:link {
     left: 10px;
     font-size: 25px;
 }
+
 #pledgeData {
     width: 100%;
     height: 400px;
@@ -190,4 +192,5 @@ hr {
 #pledgeData img{
     margin: 20px;
 }
+
 

@@ -136,8 +136,8 @@ input[type=password] {
     position: fixed;
     display: inline-block;
     width: 360px;
-    height: 360px;
-    top: 22%;
+    height: 430px;
+    top: 15%;
     left: 35%;
     background: #4be7a9;
     border-radius: 3px;
